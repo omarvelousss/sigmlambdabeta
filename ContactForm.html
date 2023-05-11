@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Save Web Form Data to Spreadsheets - Contact Form</title>
+        <script
+            src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous">
+        </script>
+            <script>
+                function SubForm (){
+                    $.ajax({
+                        url:'https://api.apispreadsheets.com/data/8QSYMjRMscNhgDOg/',
+                        type:'post',
+                        data:$("#myForm").serializeArray(),
+                        success: function(){
+                        alert("Form Data Submitted :)")
+                        },
+                        error: function(){
+                        alert("There was an error :(")
+                        }
+                    });
+                }
+            </script>
+
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="styles.css" /> 
+
+    </head>
+    <body>
+        <div>
+            <form id="myForm">
+                <label>Full Name</label>
+                <br/>
+                <input name="full_name" />
+                <br/>
+                <label>Email</label>
+                <br/>
+                <input name="email" />
+                <br/>
+                <label>Do you want a birthday post?</label>
+                <br/>
+                <input type="radio" id="age" name="age" value="Yes" /> Yes<br/>
+                <input type="radio" id="age" name="age" value="No" /> No<br/>
+                <br/>
+                <label>Birthday</label>
+                <br/>
+                <input type="date" name="message"/>
+                <br/>
+                <br/>
+            </form>
+
+            <button onclick="SubForm()">Submit</button>
+        </div>
+    </body>
+</html>
